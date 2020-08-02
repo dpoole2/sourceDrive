@@ -1,0 +1,28 @@
+
+<div class="container">
+<h1> Root </h1>
+<br>
+    <div class="row">
+        <button id="new-btn"> New </button>
+    </div><br>
+    <div class="row" style= "display:none;" id="hidden-form">
+        <form>
+            <%= link_to "New Folder", new_folder_path(folder_id: @folder.id)%><br>
+            <%= link_to "New File", new_folder_file_path(folder_id: @folder.id)%>
+        </form>
+    </div>
+    <% @files.each do |file|%>
+        <%= file.file_name%>
+    <%end%>
+    
+    <% @folders.each do |folder|%>
+        <div class="col-md-2">
+        <div class="row">
+            <%= link_to image_tag("/public/images/folder.png"), folder_path(folder)%>
+        </div>
+        <div class="row">
+            <%= label_tag folder.folder_name%>
+        </div>
+        </div>
+    <%end%>
+</div>
